@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <Configurations>Debug;Release;Testing</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Testing|AnyCPU'">
+    <DefineConstants>TRACE;TESTING</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\**" />
+    <Compile Remove="Payment\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Payment\**" />
+    <None Remove="Models\**" />
+    <None Remove="Payment\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\applepay.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\applepay.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CreditCardValidator" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.6" />
+    <PackageReference Include="Stripe.net" Version="39.33.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.Categories.Service\AppleGooglePay.Mobile.Categories.Service.csproj" />
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.Categories\AppleGooglePay.Mobile.Categories.csproj" />
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.Order.Service\AppleGooglePay.Mobile.Order.Service.csproj" />
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.Order\AppleGooglePay.Mobile.Order.csproj" />
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.Payment\AppleGooglePay.Mobile.Payment.csproj" />
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.ShoppingCart.Service\AppleGooglePay.Mobile.ShoppingCart.Service.csproj" />
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.ShoppingCart\AppleGooglePay.Mobile.ShoppingCart.csproj" />
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.Storage.Service\AppleGooglePay.Mobile.Storage.Service.csproj" />
+    <ProjectReference Include="..\..\AppleGooglePay.Mobile.Storage\AppleGooglePay.Mobile.Storage.csproj" />
+  </ItemGroup>
+</Project>
